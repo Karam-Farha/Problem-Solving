@@ -1,0 +1,22 @@
+It is easy to solve this problem using brute force clearly.
+
+However more efficient solution appears when taking a different
+approach:
+
+We are aiming to maximize the width & height of our container . . so 
+
+why don't we start by trying the edges of our input (first and last 
+
+elements) as it provides maximum width for a start, now we're seeking
+
+to iterate over all array elements but how do we start?!
+
+since moving left to right or right to left reduces width we try to focuse
+
+on keeping the height maximized by comparing the tow indexes we 
+
+have and moving the smaller one only and stop when the tow indexes 
+
+meet each other this way by on iteration over the array we cover all 
+
+important pairs
