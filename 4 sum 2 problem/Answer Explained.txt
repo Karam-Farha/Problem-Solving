@@ -1,0 +1,21 @@
+I believe the brute-force solution is quite obvious.
+
+anyway the question is can we do better?
+
+since saying: A[i] + B[j] + C[k] + D[l] == 0
+is equal to: A[i] + B[j] ==  C[k] + D[l]
+
+if the pair A[i] + B[j] == 1 we search for pair C[k] + D[l] == -1.
+Based on this idea lets try to simplfy the search domain.
+
+We can break the search domain into two sub-domains by following these steps:
+
+1- Create a hash table using the first two arrays as follow:
+    For every possible pair (A[i], B[j]), calculate their sum.
+    If the sum already exists in the hash table, increment its count by 1.
+    If the sum does not exist, create a new record where: Key = The sum (A[i] + B[j]) and Value = 1
+
+2- Search in the Last Two Arrays
+    For every possible pair (C[k], D[l]), calculate their sum and check if its negative exists in the hash table.
+
+    If -(C[k] + D[l]) is found in the hash table, it means there are N valid quadruples (where N is the count stored in the hash table).
