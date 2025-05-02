@@ -1,0 +1,42 @@
+I believe the brute-force solution is quite obvious.
+
+anyway the question is can we do better?
+
+yes we can do better with 2 moving pointers and a buffer array to track seen characters.
+
+Assume we have the input: "a b d a c d e"
+
+Initial Setup:
+
+- Place both pointers (left and right) at the start of the string.
+
+- Move the right pointer one step at a time.
+
+# If the character is new: add it to the buffer array
+
+        "a b d a c d e"
+         ~ ~
+        => buffer_array = [a b]
+        length = left_pointer - right_pointer + 1 = 2
+_________________________
+
+step 2:
+        "a b d a c d e"
+         ~   ~
+        => buffer_array = [a b d]
+        length = left_pointer - right_pointer + 1 = 3
+_________________________
+
+step 3:
+        "a b d a c d e"
+         ~     ~ 
+
+# If the character is repeated: move the left pointer to the index right after the first occurrence of the repeated character.
+
+        "a b d a c d e"
+           ~   ~ 
+        length = left_pointer - right_pointer + 1 = 3
+        => buffer_array = [a b d]
+
+This way we need to traverse our input only once 
+and we only do comparisons on our buffer array which is at most 26 elements (the number of English letters)  
