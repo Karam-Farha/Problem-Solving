@@ -1,0 +1,29 @@
+The brute-force intuition for this problem is obvious but inefficient. Instead, we'll solve it more efficiently using the sliding window approach.
+
+now the main idea is as follow:
+1- Start with tow pointers (left , right) at index 0
+2- Expand the window by moving right and check if the current window contains all required characters.
+3- If you find a vaild window save it
+4- when ever you have a vaild window start shrinking its size by moving the left pointer this time
+5- Update the smallest valid window during shrinking.
+6- If the moving of the left pointer made the window unvalid now its time to go back to step 2
+7- Repeat until the end of the string is reached.
+
+But how do we know that a window is Valid or not?
+
+one way is we Iterate over all the pattern characters in our in-testing window (slow)
+
+other way is to built a hash map for all characters in the pattern
+and another hash map for the seen characters while we are expanding our window
+
+such that:
+assume our required pattern is "ABC" => {'A' = 1 , 'B' = 1 , 'C' = 1}
+
+if our current window for example: 
+"ADO" => {'A' = 1 , 'D' = 1 , 'O' = 1} Not Valid
+"ADOBEC" => {'A' = 1 , 'D' = 1 , 'O' = 1, 'B' = 1 , 'E' = 1, 'C' = 1} Valid
+"ABCC" => {'A' = 1 , 'B' = 1 , 'C' = 2} not valid sinc C occures only once in the pattern
+
+Why Hash Maps?
+-Comparing keys in hash maps is O(1) per check, making the algorithm O(n) time complexity.
+-Avoids repeatedly scanning the window for validity (unlike brute-force).
