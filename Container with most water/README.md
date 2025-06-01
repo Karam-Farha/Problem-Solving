@@ -1,7 +1,8 @@
 # Problem Description
 Given n non-negative integers where each integer represent the height of a vertical line on a chart
 
- ![helping photo](./photo.jpg)
+ <!-- ![helping photo](./photo.jpg) -->
+ <img src="photo.jpg" class="width=100%">
 
 find tow lines which toghther with x-axis forms a container that, holds the biggest amount of water
 return the arean of that water
